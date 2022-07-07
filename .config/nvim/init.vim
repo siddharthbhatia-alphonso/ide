@@ -52,8 +52,6 @@ nnoremap <C-l> <C-w>l
 nnoremap <A-h> :tabprevious<CR>
 nnoremap <A-l> :tabnext<CR>
 
-nnoremap <C-p> :<C-u>FZF<CR>
-
 " plugins using https://github.com/junegunn/vim-plug
 call plug#begin('~/.local/shared/nvim/plugged')
 
@@ -81,3 +79,9 @@ filetype plugin on
 " navigating coc autocompletion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+nnoremap <C-p> :<C-u>FZF<CR>
+
+let g:fzf_action = {
+      \ 'enter': 'tabnew',
+  \ }
