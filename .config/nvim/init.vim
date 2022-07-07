@@ -71,6 +71,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
+Plug 'kyazdani42/nvim-web-devicons'
+
+Plug 'kyazdani42/nvim-tree.lua'
+
 call plug#end()
 
 " required at least for nerdcommenter plugin
@@ -85,3 +89,18 @@ nnoremap <C-p> :<C-u>FZF<CR>
 let g:fzf_action = {
       \ 'enter': 'tabnew',
   \ }
+
+nnoremap <Leader>t :NvimTreeFindFileToggle<CR>
+
+lua <<EOF
+require("nvim-tree").setup({
+      sort_by = "case_sensitive",
+      view = {
+        mappings = {
+          list = {
+            { key = "<CR>", action = "tabnew" },
+          },
+        },
+      },
+    })
+EOF
