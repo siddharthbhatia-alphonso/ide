@@ -2,6 +2,7 @@ FROM node:latest
 
 # copy config files
 COPY ./.bashrc /root/.bashrc
+COPY ./.gitconfig /root/.gitconfig
 COPY ./.git_completion.bash /root/.git_completion.bash
 COPY ./.git_prompt.sh /root/.git_prompt.sh
 RUN mkdir -p /root/.config/nvim
@@ -25,5 +26,7 @@ RUN sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/p
 
 # install nvim plugins
 RUN nvim --headless +PlugInstall +qall
+
+RUN apt update && apt install less
 
 WORKDIR /
